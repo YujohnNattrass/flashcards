@@ -1,11 +1,9 @@
 require "sinatra"
 require "sinatra/content_for"
 require "tilt/erubis"
-
-require "sinatra/reloader"
-
 require_relative "database_persistence"
-also_reload "database_persistence"
+
+require "sinatra/reloader" if development?
 
 before do
   @storage = DatabasePersistence.new(logger)

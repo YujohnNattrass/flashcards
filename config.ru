@@ -1,2 +1,2 @@
-require './flashcard'
+require './flashcards'
 run Sinatra::Application
