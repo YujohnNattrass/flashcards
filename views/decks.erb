@@ -1,0 +1,15 @@
+<div>
+  <a href="/new">Create deck</a>
+
+  <ul>
+    <% @decks.each do |deck| %>
+      <li>
+        <a href="/<%= deck[:id] %>"><%= deck[:name] %></a>
+        <a href="/<%= deck[:id] %>/edit">Edit</a>
+        <form action="/<%= deck[:id] %>/delete" method="POST">
+          <button type="submit">Delete</button>
+        </form>
+      </li>
+    <% end %>
+  </ul>
+</div>

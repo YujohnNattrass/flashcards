@@ -1,0 +1,17 @@
+<% unless @flashcard %>
+  <p>Congratulations, You have completed the deck!</p>
+  <form action="/<%= params[:id] =%>/study" method="POST">
+    <button type="submit" name="start_over">Start Over</button>
+  </form>
+
+<% else %>
+  <h3><%= @flashcard[:front]  =%></h3>
+  <p class="answer"><%= @flashcard[:back] =%></p>
+  <button class="answer">Show answer</button>
+  <form action="/<%= params[:id] =%>/study" method="POST">
+    <button type="submit" name="repeat" value="<%=@flashcard[:id] =%>">Repeat</button>
+  </form>
+  <a href="/<%= params[:id] =%>/study">Next flashcard</a>
+<% end %>
+
+<a href="/<%= params[:id] =%>">Go back</a>

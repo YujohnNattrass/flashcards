@@ -1,0 +1,19 @@
+<h3>Create Flashcard</h3>
+
+<form action="/<%= params[:id] =%>/new" method="post">
+  <div>
+    <label for="front">Front</label>
+    <div>
+      <textarea rows="5" cols="30" name="front" id="front"><%= params[:front] =%></textarea>
+    </div>
+  </div>
+
+  <div>
+    <label for="back">Back</label>
+    <div>
+      <textarea rows="5" cols="30" name="back" id="back"><%= params[:back] %></textarea>
+    </div>
+  </div>
+  <button type="submit">Save</button>
+</form>
+<a href="/<%= params[:id] =%>">Go back</a>

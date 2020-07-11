@@ -1,0 +1,8 @@
+<h3><%= @deck[:name] =%></h3>
+<form action="<%= params[:id] =%>/study" method="POST">
+  <button type="submit">Study flashcards</button>
+</form>
+
+<a href="/<%= params[:id] =%>/flashcard">Create flashcard</a>
+<a href="/<%= params[:id] =%>/flashcards">View all flashcards</a>
+<a href="/">View Decks</a>

@@ -1,0 +1,7 @@
+<form action="/<%= @deck[:id] %>/edit" method="POST">
+  <label for="deck_name">Deck name:</label>
+  <input type="text" name="deck_name" id="deck_name" value="<%= params[:deck_name] || @deck[:name] %>">
+  <button type="submit">Submit</button>
+</form>
+
+<a href="/">View decks</a>

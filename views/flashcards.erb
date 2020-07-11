@@ -1,0 +1,27 @@
+<div>
+  <h3><%= @deck[:name] =%></h3>
+  <a href="/<%= params[:id] =%>">Go back</a>
+
+  <% if @flashcards.empty? %>
+    <p>Create flashcards and see them here</p>
+  <% else %>
+    <form action="/<%= params[:id] =%>/flashcards/search" method="POST">
+      <label for="term">Search</label>
+      <input type="text" name="term" id="term" value="<%= params[:term] =%>">
+      <button type="submit">Find</button>
+    </form>
+
+    <ul>
+      <% @flashcards.each do |flashcard| %>
+        <li>
+          <p><%= flashcard[:front] =%></p>
+          <p><%= flashcard[:back] =%></p>
+        </li>
+        <a href="/<%= params[:id] =%>/<%= flashcard[:id] =%>/edit" class><button>Edit</button></a>
+        <form action="/<%= params[:id] =%>/<%= flashcard[:id] =%>/delete" method="POST" style="display: inline;">
+          <button type="submit">Delete</button>
+        </form>
+      <% end %>
+    </ul>
+  <% end %>
+</div>

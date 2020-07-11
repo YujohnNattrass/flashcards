@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <title>Flashcards App</title>
+    <meta charset="URF-8">
+    <script src="/javascripts/jquery-3.5.1.min.js"></script>
+    <script src="/javascripts/application.js"></script>
+  </head>
+  <body>
+    <% if session[:message] %>
+      <p><%= session.delete(:message) %></p>
+    <% end %>
+
+    <main>
+      <%= yield %>
+    </main>
+  </body>
+</html>
