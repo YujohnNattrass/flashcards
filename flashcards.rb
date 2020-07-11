@@ -172,7 +172,7 @@ post "/:deck_id/:id/edit" do
   else
     @storage.edit_flashcard(params[:id], front, back)
     session[:message] = "Flashcard updated"
-    redirect "/#{ params[:deck_id] }"
+    redirect "/#{ params[:deck_id] }/flashcards"
   end
 end
 
