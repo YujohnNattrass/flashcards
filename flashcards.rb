@@ -37,6 +37,19 @@ def error_for_flashcard(front, back)
   end
 end
 
+def load_flashcard_ids(deck_id)
+  decks_flashcard_ids = session[:deck_id_to_flashcard_ids]
+
+  if !decks_flashcard_ids[deck_id]
+     flashcard_ids = @storage.flashcards_for_deck(deck_id)
+                             .map { |flashcard| flashcard[:id] }
+
+    decks_flashcard_ids[deck_id] = flashcard_ids.shuffle
+  else
+    decks_flashcard_ids[deck_id]
+  end
+end
+
 get "/" do
   @decks = @storage.all_decks
   erb :decks, layout: :layout
@@ -173,19 +186,6 @@ post "/:deck_id/:id/edit" do
     @storage.edit_flashcard(params[:id], front, back)
     session[:message] = "Flashcard updated"
     redirect "/#{ params[:deck_id] }/flashcards"
-  end
-end
-
-def load_flashcard_ids(deck_id)
-  decks_flashcard_ids = session[:deck_id_to_flashcard_ids]
-
-  if !decks_flashcard_ids[deck_id]
-     flashcard_ids = @storage.flashcards_for_deck(deck_id)
-                             .map { |flashcard| flashcard[:id] }
-
-    decks_flashcard_ids[deck_id] = flashcard_ids.shuffle
-  else
-    decks_flashcard_ids[deck_id]
   end
 end
 
