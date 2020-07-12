@@ -17,6 +17,7 @@ end
 configure do
   enable :sessions
   set :session_secret, 'secret'
+  set :erb, :escape_html => true
 end
 
 def error_for_deck_name(deck_name)
