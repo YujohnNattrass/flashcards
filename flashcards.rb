@@ -20,6 +20,12 @@ configure do
   set :erb, :escape_html => true
 end
 
+helpers do
+  def bold_searched_term(text, term)
+    text.gsub(/#{ term }/i) { |word| %(<strong>#{word}</strong>) }
+  end
+end
+
 def error_for_deck_name(deck_name)
   if !(1..50).include?(deck_name.size)
     "Deck name must be 1 to 50 characters long"

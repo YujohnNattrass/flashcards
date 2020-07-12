@@ -10,8 +10,8 @@
     <ul>
       <% @flashcards.each do |flashcard| %>
         <li>
-          <p><%= flashcard[:front] =%></p>
-          <p><%= flashcard[:back] =%></p>
+          <p><%== bold_searched_term(flashcard[:front], params[:term]) =%></p>
+          <p><%== bold_searched_term(flashcard[:back], params[:term]) =%></p>
         </li>
         <a href="/<%= params[:id] =%>/<%= flashcard[:id] =%>/edit" class><button>Edit</button></a>
         <form action="/<%= params[:id] =%>/<%= flashcard[:id] =%>/delete" method="POST" style="display: inline;">
