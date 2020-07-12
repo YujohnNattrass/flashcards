@@ -90,8 +90,8 @@ class DatabasePersistence
       SELECT *
       FROM flashcards
       WHERE deck_id = $1 
-      AND front LIKE '%' || $2 || '%'
-      OR back LIKE '%' || $2 || '%'
+      AND front ~* $2
+      OR back ~* $2
       ORDER BY id
     SQL
 
